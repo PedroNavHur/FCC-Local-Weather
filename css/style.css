@@ -1,0 +1,44 @@
+/* Custom Stylesheet */
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+.fa:hover {
+  /* Font Awesome Hover */
+  opacity: 0.5;
+}
+
+.fa-heart {
+  /* heart color*/
+  color: #E91E63;
+}
+
+#index-banner {
+  height: calc(100vh - 175.5px);
+  padding-top: 15vh;
+}
+
+#localWeather {
+  font-weight: bolder;
+}
+
+body {
+  background-color: #009688;
+}
+
+.row {
+  margin-bottom: 0px;
+}
+
+#temperature {
+  font-size: 2rem;
+}
+
+#wind, #humidity, #rain {
+  font-size: 1.2rem;
+}

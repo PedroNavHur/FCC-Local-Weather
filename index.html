@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Random Quote Generator</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <div class="card white">
+            <div class="card-content grey-text">
+              <div class="row">
+                <div class="col s5 m5 offset-m1">
+                  <p id="temperature">28° <i class="wi wi-day-rain"></i></p>
+                  <p id="weather">Sunny</p>
+                </div>
+                <div class="col s7 m5">
+                  <p class="center" id="localWeather">Local Weather</p>
+                  <p class="center" id="location">Managua, Nicaragua</p>
+                  <p class="center" id="time">Monday, 4:30 p.m.</p>
+                </div>
+              </div>
+              <br>
+              <p class="center">More Weather Info</p>
+              <div class="row">
+                <div class="col s4 m3 offset-m1">
+                  <p id="humidity"><i class="wi wi-humidity"> 30 %</i></p>
+                </div>
+                <div class="col s4">
+                  <p id="wind"><i class="wi wi-wind-beaufort-1"> 6 m/s</i></p>
+                </div>
+                <div class="col s4">
+                  <p id="rain"><i class="wi wi-umbrella"> 30 %</i></p>
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <div class="row">
+                <div class="switch col s6 m6 offset-m1 ">
+                  <label>
+                  F
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  C
+                </label>
+                </div>
+                <div class="col">
+                  <a class="btn waves-effect waves-light right amber accent-3" id="refreshButton">Refresh</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l12 s12">
+          <h5 class="white-text">Local Weather App</h5>
+          <p class="grey-text text-lighten-4">
+            A Free Code Camp Project.
+            <a class="grey-text text-lighten-3" href="https://darksky.net"><i>Data by Dark Sky</i></a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Made with <a class="fa fa-heart"></a> by Pedro Navarrete Hurtado
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+
+</html>
