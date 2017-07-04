@@ -25,6 +25,7 @@
 
 #localWeather {
   font-weight: bolder;
+  color: #616161;
 }
 
 body {
@@ -36,9 +37,12 @@ body {
 }
 
 #temperature {
+  font-weight: 300;
   font-size: 2rem;
+  color: #616161;
 }
 
 #wind, #humidity, #rain {
   font-size: 1.2rem;
+  color: #616161;
 }
