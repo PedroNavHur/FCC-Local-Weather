@@ -28,6 +28,11 @@
   color: #616161;
 }
 
+#optionsTitle {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
 body {
   background-color: #009688;
 }

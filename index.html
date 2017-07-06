@@ -21,11 +21,11 @@
           <div class="card white">
             <div class="card-content grey-text">
               <div class="row">
-                <div class="col s5 m5 offset-m1">
-                  <p id="temperature">28° <i class="wi wi-day-rain"></i></p>
-                  <p id="weather">Sunny</p>
+                <div class="col s6 m5 offset-m1">
+                  <p id="temperature">X° <i class="wi wi-refresh"></i></p>
+                  <p id="weather">Loading</p>
                 </div>
-                <div class="col s7 m5">
+                <div class="col s6 m5">
                   <p class="center" id="localWeather">Local Weather</p>
                   <p class="center" id="location">Loading</p>
                   <p class="center" id="time">Loading</p>
@@ -35,30 +35,37 @@
               <p class="center">More Weather Info</p>
               <div class="row">
                 <div class="col s4 m3 offset-m1">
-                  <p id="humidity"><i class="wi wi-humidity"> 30 %</i></p>
+                  <p id="humidity"><i class="wi wi-humidity"> X %</i></p>
                 </div>
                 <div class="col s4">
-                  <p id="wind"><i class="wi wi-wind-beaufort-1"> 6 m/s</i></p>
+                  <p id="wind"><i class="wi wi-strong-wind"> X mph</i></p>
                 </div>
                 <div class="col s4">
-                  <p id="rain"><i class="wi wi-umbrella"> 30 %</i></p>
+                  <p id="rain"><i class="wi wi-umbrella"> X %</i></p>
                 </div>
               </div>
             </div>
             <div class="card-action">
-              <div class="row">
-                <div class="switch col s6 m6 offset-m1 ">
-                  <label>
-                  F
-                  <input type="checkbox">
+              <span class="card-title activator grey-text text-darken-4" id="optionsTitle">
+                Local Weather App
+                <i class="material-icons right">settings</i>
+              </span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">
+                Settings
+                <i class="material-icons right">close</i>
+              </span>
+              <p>Here are some options.</p>
+              <div class="switch">
+                <label>
+                  Imperial
+                  <input type="checkbox" id="conversionSwitch">
                   <span class="lever"></span>
-                  C
+                  Metric
                 </label>
-                </div>
-                <div class="col">
-                  <a class="btn waves-effect waves-light right amber accent-3" id="refreshButton">Refresh</a>
-                </div>
               </div>
+              <a class="btn waves-effect waves-light right amber accent-3" id="refreshButton">Refresh</a>
             </div>
           </div>
         </div>
