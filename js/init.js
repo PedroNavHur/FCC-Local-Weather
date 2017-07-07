@@ -3,6 +3,14 @@
 
     // we define the global variables
     var position;
+    var weather;
+    var icon;
+    var temperature;
+    var humidity;
+    var windSpeed;
+    var rainProv;
+    var dayOrNight;
+
 
     // we call the get functions
     getLocationInfo();
@@ -42,6 +50,7 @@
       var hour = time.getHours();
       var minute = time.getMinutes();
       var dayS;
+      var timeHtml;
 
       // switch to change day number to text
       switch (day) {
@@ -67,32 +76,43 @@
           dayS = "Saturday";
       }
 
+      // is it day or night
+      if (hour > 5 && hour < 19) {
+        dayOrNight = true;
+      }
+
+      // Nice format the numbers
+      if (minute < 10) {
+        minute = ("0" + minute)
+      }
+
+      // if else to change between 12 hour or 24 hour clock
+      if ($('#timeSwitch').prop('checked')) {
+        console.log('12-Hour');
+        if (hour > 12) {
+          hour = (hour - 12);
+          timeHtml = (hour + ":" + minute + " p.m");
+        } else {
+          timeHtml = (hour + ":" + minute + " a.m");
+        }
+
+      } else {
+        console.log('24-Hour');
+        timeHtml = (hour + ":" + minute);
+      }
+
       // we set the time info in the html
-      $("#time").html(dayS + ', ' + hour + ":" + minute);
+      $("#time").html(dayS + ', ' + timeHtml);
+
 
     }
 
-    // Current Weather function
+    // Get Weather function
     function getCurrentWeather() {
 
       // we define the local variables
       var apiKey = "0a00ea58cefe0998cff62dd8d9506ce9/";
       var url = "https://api.darksky.net/forecast/";
-
-      // weather local variables
-      var weather;
-      var icon;
-      var temperature;
-      var humidity;
-      var windSpeed;
-      var rainProv;
-
-      // weather variables calc
-      var temperatureHtml;
-      var iconHtml;
-      var humidityHtml;
-      var rainProvHtml;
-      var windSpeedHtml;
 
       // test the forecast on console
       console.log(
@@ -115,75 +135,128 @@
           weather + icon + temperature + humidity + windSpeed + rainProv
         );
 
-        // switch to choose the icon
+        // we call the showCurrent Weather function
+        showCurrentWeather();
+
+      }, "jsonp");
+
+    }
+
+    // Show Weather function
+    function showCurrentWeather() {
+
+      // weather variables calc
+      var temperatureHtml;
+      var iconHtml;
+      var humidityHtml;
+      var rainProvHtml;
+      var windSpeedHtml;
+
+      // if and switches to choose the icon
+
+      if (dayOrNight = true) {
         switch (icon) {
           case 'clear-day':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-sunny"></i>';
             break;
           case 'clear-night':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-night-clear"></i>';
             break;
           case 'rain':
             iconHtml = '<i class="wi wi-day-rain"></i>';
             break;
           case 'snow':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-snow"></i>';
             break;
           case 'sleet':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-sleet"></i>';
             break;
           case 'wind':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-windy"></i>';
             break;
           case 'fog':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-fog"></i>';
             break;
           case 'cloudy':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-cloudy"></i>';
             break;
           case 'partly-cloudy-day':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-sunny-overcast"></i>';
             break;
           case 'partly-cloudy-night':
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-night-alt-partly-cloudy"></i>';
             break;
           default:
-            iconHtml = '<i class="wi wi-day-rain"></i>';
+            iconHtml = '<i class="wi wi-day-haze"></i>';
         }
-
-        // if to change from imperial to metric
-        if ($('#conversionSwitch').prop('checked')) {
-          console.log('metric');
-          temperature = ((temperature - 32) * (5/9));
-          temperature = parseInt(temperature);
-          temperatureHtml = (temperature + '<i class="wi wi-celsius"></i> ');
-          windSpeed = (windSpeed / 0.62137);
-          windSpeed = parseInt(windSpeed);
-          windSpeedHtml = ('<i class="wi wi-strong-wind"></i> ' + windSpeed + 'Kph')
-        } else {
-          console.log('imperial');
-          temperature = parseInt(temperature);
-          temperatureHtml = (temperature + '<i class="wi wi-fahrenheit"></i> ')
-          windSpeed = parseInt(windSpeed);
-          windSpeedHtml = ('<i class="wi wi-strong-wind"></i> ' + windSpeed + 'Mph')
+      } else {
+        switch (icon) {
+          case 'clear-day':
+            iconHtml = '<i class="wi wi-day-sunny"></i>';
+            break;
+          case 'clear-night':
+            iconHtml = '<i class="wi wi-night-clear"></i>';
+            break;
+          case 'rain':
+            iconHtml = '<i class="wi wi-night-rain"></i>';
+            break;
+          case 'snow':
+            iconHtml = '<i class="wi wi-night-alt-snow"></i>';
+            break;
+          case 'sleet':
+            iconHtml = '<i class="wi wi-night-sleet"></i>';
+            break;
+          case 'wind':
+            iconHtml = '<i class="wi wi-night-alt-cloudy-windy"></i>';
+            break;
+          case 'fog':
+            iconHtml = '<i class="wi wi-night-fog"></i>';
+            break;
+          case 'cloudy':
+            iconHtml = '<i class="wi wi-night-cloudy"></i>';
+            break;
+          case 'partly-cloudy-day':
+            iconHtml = '<i class="wi wi-day-sunny-overcast"></i>';
+            break;
+          case 'partly-cloudy-night':
+            iconHtml = '<i class="wi wi-night-alt-partly-cloudy"></i>';
+            break;
+          default:
+            iconHtml = '<i class="wi wi-stars"></i>';
         }
+      }
 
-        // convert humidity and rainProv
-        humidity = (humidity * 100);
-        humidity = parseInt(humidity);
-        humidityHtml = ('<i class="wi wi-humidity"></i> ' + humidity + ' %')
-        rainProv = (rainProv * 100);
-        rainProv = parseInt(rainProv);
-        rainProvHtml = ('<i class="wi wi-umbrella"></i> ' + rainProv + ' %')
+      // if to change from imperial to metric
+      if ($('#conversionSwitch').prop('checked')) {
+        console.log('metric');
+        temperatureHtml = ((temperature - 32) * (5 / 9));
+        temperatureHtml = parseInt(temperatureHtml);
+        temperatureHtml = (temperatureHtml + '<i class="wi wi-celsius"></i> ');
+        windSpeedHtml = (windSpeed / 0.62137);
+        windSpeedHtml = parseInt(windSpeedHtml);
+        windSpeedHtml = ('<i class="wi wi-strong-wind"></i> ' + windSpeedHtml + 'Kph')
+      } else {
+        console.log('imperial');
+        temperatureHtml = parseInt(temperature);
+        temperatureHtml = (temperatureHtml + '<i class="wi wi-fahrenheit"></i> ')
+        windSpeedHtml = parseInt(windSpeed);
+        windSpeedHtml = ('<i class="wi wi-strong-wind"></i> ' + windSpeedHtml + 'Mph')
+      }
 
-        // we show the info in html
-        $("#weather").html(weather);
-        $("#temperature").html(temperatureHtml + iconHtml);
-        $("#humidity").html(humidityHtml);
-        $("#rain").html(rainProvHtml);
-        $("#wind").html(windSpeedHtml);
+      // convert humidity and rainProv
+      humidityHtml = (humidity * 100);
+      humidityHtml = parseInt(humidityHtml);
+      humidityHtml = ('<i class="wi wi-humidity"></i> ' + humidityHtml + ' %')
+      rainProvHtml = (rainProv * 100);
+      rainProvHtml = parseInt(rainProvHtml);
+      rainProvHtml = ('<i class="wi wi-umbrella"></i> ' + rainProvHtml + ' %')
 
-      }, "jsonp");
+      // we show the info in html
+      $("#weather").html(weather);
+      $("#temperature").html(temperatureHtml + iconHtml);
+      $("#humidity").html(humidityHtml);
+      $("#rain").html(rainProvHtml);
+      $("#wind").html(windSpeedHtml);
 
     }
 
@@ -193,7 +266,16 @@
       } else {
         console.log('imperial');
       }
-      getCurrentWeather();
+      showCurrentWeather();
+    });
+
+    $('#timeSwitch').on('click', function() {
+      if ($('#timeSwitch').prop('checked')) {
+        console.log('12-Hour');
+      } else {
+        console.log('24-Hour');
+      }
+      getCurrentTime();
     });
 
   }); // end of document ready
